@@ -37,14 +37,24 @@ public class CreatureRadarItem : GrabbableObject
 
         if (this.isHeld)
         {
-            if (!this.insertedBattery.empty)
+            if (this.insertedBattery.empty)
             {
-                // TODO: Add the actual radar functionality
+                // TODO: Play a sound to indicate that the battery is empty
+
             }
             else
             {
-                // TODO: Play a sound to indicate that the battery is empty
+                // TODO: Add the actual radar functionality
             }
+        }
+    }
+
+    private void startTracking() // TODO: Add the actual radar functionality
+    {
+        if (!isBeeping)
+        {
+            isBeeping = true;
+            // For performance reasons, we only want to check for the closest enemy every 0.75 seconds
         }
     }
 
@@ -53,7 +63,10 @@ public class CreatureRadarItem : GrabbableObject
         itemAudioSource.pitch -= decrementValue;
     }
 
-    private void 
+    private void beepPitchUp(float incrementValue = 0.033f)
+    {
+        itemAudioSource.pitch += incrementValue;
+    }
 
     public override void UseUpBatteries()
     {
